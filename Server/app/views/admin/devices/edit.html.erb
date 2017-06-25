@@ -1,0 +1,41 @@
+<%= render 'layouts/admin_menu' %>
+
+<h1>Редактирование устройства</h1>
+
+<% device = @device %>
+<%= form_for(device, url: admin_device_path(@device)) do |f| %>
+  <% if device.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(device.errors.count, "error") %> prohibited this device from being saved:</h2>
+
+      <ul>
+      <% device.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Имя" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :UID, "ID"  %>
+    <%= f.number_field :UID %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id, "User ID" %>
+    <%= f.number_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Редактировать" %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Показать', admin_device_path(@device) %> |
+<%= link_to 'Назад', admin_devices_path %>

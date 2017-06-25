@@ -1,0 +1,10 @@
+<%= render 'layouts/admin_menu' %>
+
+
+<h1>Добавить устройство</h1>
+
+<%= render 'form', device: @device, url: admin_devices_path, submit: "Добавить" %>
+
+<%= link_to 'Назад', admin_devices_path %>
+
+<%= link_to 'Главная', admin_root_path %>

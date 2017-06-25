@@ -1,0 +1,37 @@
+<%= render 'layouts/admin_menu' %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Устройства</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Имя</th>
+      <th>ID</th>
+      <th>User ID</th>
+      <th>User E-mail</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @devices.each do |device| %>
+      <tr>
+        <td><%= device.name %></td>
+        <td><%= device.UID %></td>
+        <td><%= device.user_id %></td>
+        <th><%= User.find(device.user_id).email%></th>
+        <td><%= link_to 'Показать', admin_device_path(device) %></td>
+        <td><%= link_to 'Редактировать', edit_admin_device_path(device) %></td>
+        <td><%= link_to 'Удалить', admin_device_path(device), method: :delete, data: { confirm: 'Вы уверены? Это действие необратимо!' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Добавить устройство', new_admin_device_path %>
+
+<br>
+<%= link_to 'Главная', admin_root_path %>

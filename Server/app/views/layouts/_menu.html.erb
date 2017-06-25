@@ -1,0 +1,19 @@
+<div class="menu">
+  <div class="main">
+  <%= link_to 'Удалённый доступ', root_path %>
+  </div>
+  <div class="items">
+    <div class="item">
+      <%= link_to 'Мои устройства', devices_path %>
+    </div>
+    <div class="item">
+      <%= link_to 'История', history_path %>
+    </div>
+    <div class="item">
+      <%= link_to 'Настройки', edit_user_registration_path %>
+    </div>
+    <div class="item">
+  <%= link_to('Выход', destroy_user_session_path, :method => :delete) %>        
+    </div>
+  </div>
+</div>

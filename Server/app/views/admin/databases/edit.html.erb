@@ -1,0 +1,8 @@
+<%= render 'layouts/admin_menu' %>
+
+<h1>Редактирование БД</h1>
+
+<%= render 'form', database: @database, url: admin_database_path(@database), submit: "Редактировать" %>
+
+<%= link_to 'Показать', admin_database_path(@database) %> |
+<%= link_to 'Назад', admin_databases_path %>

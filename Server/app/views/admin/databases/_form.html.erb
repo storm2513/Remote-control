@@ -1,0 +1,27 @@
+<%= form_for(database, url: url) do |f| %>
+  <% if database.errors.any? %>
+    <div id="error_explanation">
+      <h2>Данные устройства не были сохранены. <%="#{database.errors.count.to_s} #{I18n.t :error, :count => @database.errors.count}:" %> </h2>
+
+      <ul>
+      <% database.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :UID, "ID" %>
+    <%= f.number_field :UID %>
+  </div>
+
+  <div class="field">
+    <%= f.label :secret %>
+    <%= f.text_field :secret %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit submit%>
+  </div>
+<% end %>

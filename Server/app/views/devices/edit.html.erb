@@ -1,0 +1,7 @@
+<%= render 'layouts/menu' %>
+<h1>Редактирование устройства</h1>
+
+<%= render 'form', device: @device, submit: "Редактировать" %>
+
+<%= link_to 'Показать', @device %> |
+<%= link_to 'Назад', devices_path %>

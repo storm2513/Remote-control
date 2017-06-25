@@ -1,0 +1,8 @@
+<%= render 'layouts/admin_menu' %>
+
+
+<h1>Новое устройство</h1>
+
+<%= render 'form', database: @database, url: admin_databases_path, submit: "Добавить" %>
+
+<%= link_to 'Назад', admin_databases_path %>

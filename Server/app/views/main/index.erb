@@ -1,0 +1,63 @@
+<script>
+$(document).ready(function(){
+  $('.child_device').bind('ajax:success', function(evt, data, status, xhr) {
+      if($(this).find('.activate').val() == "Active")
+        $(this).find('.activate').val("Disabled");
+      else
+        $(this).find('.activate').val("Active");
+    })
+    .bind("ajax:error", function(evt, xhr, status, error) {
+      alert("Ошибка");
+    });
+})
+$(document).ready(function(){
+  $('.power').bind('ajax:success', function(evt, data, status, xhr) {
+      if($(this).find('.status').val() == "ПУСК")
+        $(this).find('.status').val("СТОП");
+      else
+        $(this).find('.status').val("ПУСК");
+    })
+    .bind("ajax:error", function(evt, xhr, status, error) {
+      alert("Ошибка");
+    });
+})
+</script>
+
+<%= render 'layouts/menu' %>
+<table style="text-align: center; margin: auto; margin-top: 40px">
+  <tr>
+    <td>#</td>
+    <td>Устройство</td>
+    <td>Активность</td>
+    <td>Пользователь</td>
+    <td>Состояние</td>
+    <td>Управление</td>
+  </tr>
+  <%i = 1%>
+  <% for device in @devices%>
+    <tr class="device">
+  		<td><%=i%></td>
+      <%i += 1%>
+      <td><%=device.name%></td>
+      <td><%=device.updated_at%></td>
+      <td><%=current_user.email%></td>
+      <td>
+      <%if device.active == 1%>
+        <%text = "Active"%>
+      <%else%>
+        <%text = "Disabled"%>
+      <%end%>
+      <%= button_to text, device, remote: true, class: "activate", params: {"intent" => "child"}, form_class: 'child_device' %>
+      </td>
+      <%if device.status == 1%>
+        <%text = "СТОП"%>
+      <%else%>
+        <%text = "ПУСК"%>
+      <%end%>
+      <td>
+      <%= button_to text, device, remote: true, class: "status",  params: {"intent" => "status"}, form_class: 'power' %>
+      </td>
+    </tr>
+  <%end%>
+</table>
+</div>

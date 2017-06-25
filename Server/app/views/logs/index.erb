@@ -1,0 +1,22 @@
+<%= render 'layouts/menu' %>
+
+<h1>История</h1>
+<table style="text-align: center; margin: auto; margin-top: 40px">
+  <tr>
+    <td>#</td>
+    <td>Текст</td>
+    <td>Пользователь</td>
+    <td>Время</td>
+  </tr>
+  <%i = 1%>
+  <% for log in @logs%>
+  <tr class="log">
+		<td><%=i%></td>
+    <%i += 1%>
+    <td><%=log.text%></td>
+    <td><%=User.find_by_id(log.user_id).email%></td>
+    <td><%=log.created_at%></td>
+  </tr>
+  <%end%>
+</table>
+<%= link_to 'Главная', root_path %>

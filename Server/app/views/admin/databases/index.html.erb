@@ -1,0 +1,39 @@
+<%= render 'layouts/admin_menu' %>
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>База данных</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>ID</th>
+      <th>Secret</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <%i = 1%>
+    <% @databases.each do |database| %>
+      <tr>
+        <td><%=i%></td>
+        <% i += 1 %>
+        <td><%= database.UID %></td>
+        <td><%= database.secret %></td>
+        <td><%= link_to 'Показать', admin_database_path(database) %></td>
+        <td><%= link_to 'Редактировать', edit_admin_database_path(database) %></td>
+        <td><%= link_to 'Удалить', admin_database_path(database), method: :delete, data: { confirm: 'Вы уверены? Это действие необратимо!' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить данные устройства', new_admin_database_path %>
+
+<br>
+<%= link_to 'Главная', admin_root_path %>

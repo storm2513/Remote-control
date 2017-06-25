@@ -1,0 +1,17 @@
+<%= render 'layouts/admin_menu' %>
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @database.UID %>
+</p>
+
+<p>
+  <strong>Secret:</strong>
+  <%= @database.secret %>
+</p>
+
+<%= link_to 'Редактировать', edit_admin_database_path(@database) %> |
+<%= link_to 'Назад', admin_databases_path %>

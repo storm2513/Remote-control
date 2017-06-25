@@ -1,0 +1,45 @@
+<%= render 'layouts/menu' %>
+
+<h1>Новое устройство</h1>
+<script>
+<% if @message %>
+alert("<%= @message%>");
+window.location.replace("<%=devices_path%>");
+<% end %>
+</script>
+<%= form_for(@device) do |f| %>
+  <% if @device.errors.any? %>
+    <div id="error_explanation">
+      <h2>Устройство не было добавлено. <%="#{@device.errors.count.to_s} #{I18n.t :error, :count => @device.errors.count}:" %> </h2>
+
+      <ul>
+      <% @device.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Имя" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :UID, "ID" %>
+    <%= f.number_field :UID %>
+  </div>
+
+  <div class="field">
+    <%= f.label :secret, "Secret" %>
+    <%= f.text_field :secret %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Добавить" %>
+  </div>
+<% end %>
+
+<%= link_to 'Назад', devices_path %>
+
+<%= link_to 'Главная', root_path %>

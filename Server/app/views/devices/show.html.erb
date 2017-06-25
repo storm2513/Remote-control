@@ -1,0 +1,23 @@
+<%= render 'layouts/menu' %>
+
+<p id="notice"><%= notice %></p>
+
+<!-- <p>
+  <strong>Пользователь:</strong>
+  <%= @device.user.email %>
+</p>
+ -->
+<p>
+  <strong>Имя:</strong>
+  <%= @device.name %>
+</p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @device.UID %>
+</p>
+
+
+
+<%= link_to 'Редактировать', edit_device_path(@device) %> |
+<%= link_to 'Назад', devices_path %>

@@ -1,0 +1,30 @@
+<%= render 'layouts/admin_menu' %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Пользователи</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>E-mail</th>
+      <th>Количество устройств</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.devices.count%> </td>
+        <td><%= link_to 'Показать', admin_user_path(user) %></td>
+        <td><%= link_to 'Удалить', admin_user_path(user), method: :delete, data: { confirm: 'Вы уверены? Это действие необратимо!' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Главная', admin_root_path %>
